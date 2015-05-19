@@ -1,0 +1,62 @@
+h2 {
+	font-family:Arial, bold;
+    font-size: 96px;
+    opacity: 0.5;
+    color: blue;
+    margin: 128px 0px 5px 0px;
+    text-align: center;
+}
+
+#addThis {
+    font-size: 36px;
+    width: 100%;
+    text-shadow: 1px 1px #99a0a5;
+}
+
+form {
+    display: inline-block;
+}
+
+
+.list {
+	font-family: Arial;	
+    font-size: 36px;
+    text-align: left;
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+    margin: 0px 685px 0px 689px;
+}
+
+.item-hover {
+    border: 1px;
+    background-color: #FFF5EE;
+    text-shadow: 2px 2px #99a0a5;
+}
+
+.item {
+}
+
+.panel {
+    width: 528px;
+    height: 41px;
+    }
+
+.remove {
+    font-size: 24px;
+    float: right;
+    cursor: default;
+    margin: 5px 5px 5px 5px;
+}
+
+.remove-selected {
+    font-size: 16px;
+    float: right;
+    margin: 0px 10px 0px 0px;
+    opacity: 0.3;
+    background-color: #acb4ba;
+    cursor: pointer;
+}
+
+.remove-me {
+opacity: 0.5;
+}
