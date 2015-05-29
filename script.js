@@ -1,27 +1,34 @@
 
 
 $(document).ready(function() {
-    $(".item").hover(function() {
-        $(this).toggleClass("item-hover");
-    });
     
-	$("#addThis").keypress(function(key) {
-        if (key.which == 13) {
+	$("#addThis").keypress(function(e) {
+        if (e.which == 13) {
             var item = $("input[name=checkList]").val();
+            item = item.trim();
+            if (item == "") {
+                return false;
+            }
             renderItem(item);
             items.push(item);
             $("#addThis").val("");
-            key.preventDefault();
             localStorage.setItem('todos', items);
+            return false;
         }
     });
     render();
-    $(".remove").click(function() {
+
+    $(document).on("click", "input:checkbox", function() {
+        $(this).parent().find(".item-content").toggleClass("remove-me");
+        });
+
+    $(document).on("click", ".remove", function() {
         var toRemove = $(this).parent();
         var toRemoveText = $(toRemove).find('.item-content').text(); 
         remove([toRemoveText]);
         toRemove.remove();
     });
+    
 
     $(".remove-selected").click(function() {
         var checkedItems = $("input:checked").parent();
@@ -41,7 +48,7 @@ function remove(itemz) {
         tmp_items.push(items[j]);
         for (var i = 0; i < itemz.length; i++) {
             if (itemz[i] == items[j]) {
-                tmp_items.pop(); 
+                tmp_items.pop();
                 break;
             }
         }
@@ -50,16 +57,20 @@ function remove(itemz) {
     localStorage.setItem('todos', items);
 }   
 
-function renderItem(item) {
-    $(".list").prepend("<div class='item'><input type='checkbox' /><span class='item-content'>" + item + "</span><span class='remove'>&times;</span</div>");
+    function renderItem(item) {
+    $(".list").prepend("<div class='item'><input type='checkbox' /><span class='item-content'>" + item + "</span><button class='remove'></button></div>");
 }
 
 
-var items = localStorage.getItem('todos').split(",") ;
+var items = localStorage.getItem('todos').split(',') ;
 
 function render() {
     $.each(items, function (index, value) {
-       renderItem(value);
+        if (value == "") {
+            return;
+        } else {
+            renderItem(value);
+        }
     });
 }
 

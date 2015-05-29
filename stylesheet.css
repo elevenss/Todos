@@ -27,13 +27,9 @@ form {
     margin: 0px 685px 0px 689px;
 }
 
-.item-hover {
-    border: 1px;
-    background-color: #FFF5EE;
-    text-shadow: 2px 2px #99a0a5;
-}
 
 .item {
+    border: 0px;
 }
 
 .panel {
@@ -41,12 +37,32 @@ form {
     height: 41px;
     }
 
-.remove {
-    font-size: 24px;
+
+.remove{
+    border: 0;
+    padding: 0;
+    margin-top: 10px;
+    display: none;
+    vertical-align: baseline;
+    background: none;
+    font-size: 20px;
     float: right;
-    cursor: default;
-    margin: 5px 5px 5px 5px;
+    opacity: 0.5;
 }
+
+.list div:hover .remove {
+    display: block;
+}
+
+.list div .remove:hover {
+    opacity: 1;
+    text-shadow: 2px 2px #99a0a5;
+}
+
+.list div .remove:after {
+    content: "\00d7";
+}
+
 
 .remove-selected {
     font-size: 16px;
@@ -59,4 +75,13 @@ form {
 
 .remove-me {
 opacity: 0.5;
+}
+
+button {
+    border: 0;
+}
+
+input[type="checkbox"] {
+    margin: 15px 10px 15px 0px;
+
 }
